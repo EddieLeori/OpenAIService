@@ -1,0 +1,14 @@
+{
+	"OpenAIService":{
+		"host": "0.0.0.0",
+		"port":5124,
+		"key": "your_token_key",
+		"talk_url":"https://api.openai.com/v1/completions",
+		"img_url":"https://api.openai.com/v1/images/generations",
+		"model":"text-davinci-003",
+		"temperature":0.6,
+		"max_tokens":1000,
+		"img_cnt":2,
+		"img_size":"1024x1024"
+	}
+}
