@@ -11,7 +11,7 @@ class OpenAIService:
         self.temperature = 0
         self.max_tokens = 1000
         self.img_cnt = 2
-        self.img_size = "1024x1024"
+        self.img_size = "1024x1024" # size: 256x256, 512x512, or 1024x1024
         self.url = {
             "talk": "https://api.openai.com/v1/completions",
             "img": "https://api.openai.com/v1/images/generations"
@@ -91,10 +91,10 @@ class OpenAIService:
             response = requests.post(url, headers= user_agent, data = json.dumps(data))
             if response.status_code == 200:
                 response_text = json.loads(response.text)["choices"][0]["text"]
-            Log("ChatGPT response={0}".format(response_text))
+            Log("talkFun response={0}".format(response_text))
             return response_text
         except Exception as e:
-            Log("action except!:{0}".format(str(e)))
+            Log("talkFun except!:{0}".format(str(e)))
         return "error!"
     
     def imgFun(self):
@@ -118,9 +118,9 @@ class OpenAIService:
                 imgs = []
                 for img in json.loads(response.text)["data"]:
                     imgs.append(img["url"])
-            Log("ChatGPT response={0}".format(imgs))
+            Log("imgFun response={0}".format(imgs))
             return "{0}".format(imgs)
         except Exception as e:
-            Log("action except!:{0}".format(str(e)))
+            Log("imgFun except!:{0}".format(str(e)))
         return "error!"
     
