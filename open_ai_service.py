@@ -115,7 +115,7 @@ class OpenAIService:
             }
             response = requests.post(url, headers= user_agent, data = json.dumps(data))
             if response.status_code != 200:
-                Log("imgFun error:{0}".format(response))
+                Log("imgFun error:{0}:{1}".format(response.status_code, response.text))
                 return "error!"
             imgs = []
             for img in json.loads(response.text)["data"]:
