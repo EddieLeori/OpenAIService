@@ -1,5 +1,5 @@
 from lib.utility import *
-from app import OpenAIService
+from open_ai_service import OpenAIService
 
 if __name__ == "__main__":
     openaiservice = OpenAIService()
