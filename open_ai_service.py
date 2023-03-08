@@ -114,11 +114,12 @@ class OpenAIService:
                 "size": self.img_size
             }
             response = requests.post(url, headers= user_agent, data = json.dumps(data))
-            if response.status_code == 200:
-                imgs = []
-                for img in json.loads(response.text)["data"]:
-                    imgs.append(img["url"])
-            Log("imgFun response={0}".format(imgs))
+            if response.status_code != 200:
+                Log("imgFun error:{0}".format(response))
+                return "error!"
+            imgs = []
+            for img in json.loads(response.text)["data"]:
+                imgs.append(img["url"])
             return "{0}".format(imgs)
         except Exception as e:
             Log("imgFun except!:{0}".format(str(e)))
